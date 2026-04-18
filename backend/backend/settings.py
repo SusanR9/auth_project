@@ -13,6 +13,10 @@ print("Django running with PyMySQL")
 from pathlib import Path
 from datetime import timedelta
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
+
+import os
+
+SECRET_KEY = os.environ.get('SECRET_KEY', 'mysecret123')
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -25,7 +29,7 @@ SECRET_KEY = 'django-insecure-!7)qj$9&w*jk)1b--$wt6&r0(29pso96e7ro8ju!-@e+sn^&y4
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -83,13 +87,9 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'auth_db',
-        'USER': 'django_user',
-        'PASSWORD': 'DB@123456',
-        'HOST': 'localhost',
-        'PORT': '3306',
+ 'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
 
