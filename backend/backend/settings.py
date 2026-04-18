@@ -1,4 +1,4 @@
-```python # type: ignore
+
 """
 Django settings for backend project.
 """
